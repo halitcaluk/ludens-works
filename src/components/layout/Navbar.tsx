@@ -40,7 +40,7 @@ export default function Navbar() {
     { href: "/hizmetler", label: t("services"), hasDropdown: true },
     { href: "/surec", label: t("process") },
     { href: "/hakkimizda", label: t("about") },
-    { href: "/blog", label: t("blog") },
+    // { href: "/blog", label: t("blog") },
     { href: "/iletisim", label: t("contact") },
   ];
 

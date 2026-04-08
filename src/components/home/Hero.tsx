@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useFormModal } from "@/components/FormProvider";
+import NetworkBackground from "./NetworkBackground";
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -17,27 +18,20 @@ export default function Hero() {
 
   return (
     <section className="relative h-[85vh] min-h-[600px] flex items-center justify-center bg-[#0B0F1A] overflow-hidden">
-      {/* YouTube Video Background */}
+      {/* Animated Network Background */}
       <div className="absolute inset-0 z-0">
-        <iframe
-          src="https://www.youtube.com/embed/8uu_AlnJxEA?autoplay=1&mute=1&loop=1&playlist=8uu_AlnJxEA&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1"
-          className="absolute top-1/2 left-1/2 w-[180vw] h-[180vh] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-          style={{ minWidth: "100%", minHeight: "100%" }}
-          allow="autoplay; encrypted-media"
-          frameBorder="0"
-          title="Background video"
-        />
+        <NetworkBackground />
       </div>
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-[#0B0F1A]/80 z-[1]" />
+      {/* Dark overlay — lighter at bottom to show ground mesh */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0B0F1A]/80 via-[#0B0F1A]/50 to-[#0B0F1A]/30 z-[1] pointer-events-none" />
 
       {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#0B0F1A]/60 via-transparent to-[#0B0F1A]/90 z-[2]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0B0F1A]/50 via-transparent to-transparent z-[2] pointer-events-none" />
 
       {/* Grid pattern */}
       <div
-        className="absolute inset-0 opacity-[0.02] z-[3]"
+        className="absolute inset-0 opacity-[0.02] z-[3] pointer-events-none"
         style={{
           backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
           backgroundSize: "60px 60px",

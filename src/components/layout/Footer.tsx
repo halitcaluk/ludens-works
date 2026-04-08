@@ -68,7 +68,7 @@ export default function Footer() {
               {[
                 { href: "/surec", label: tn("process") },
                 { href: "/hakkimizda", label: tn("about") },
-                { href: "/blog", label: tn("blog") },
+                // { href: "/blog", label: tn("blog") },
                 { href: "/iletisim", label: tn("contact") },
               ].map((link) => (
                 <li key={link.href}>
