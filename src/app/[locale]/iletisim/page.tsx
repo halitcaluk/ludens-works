@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Clock, ArrowRight } from "lucide-react";
+import { Mail, MapPin, Clock, ArrowRight, Check } from "lucide-react";
 import PageHeader from "@/components/ui/PageHeader";
 import { useFormModal } from "@/components/FormProvider";
 
@@ -10,6 +10,8 @@ export default function ContactPage() {
   const t = useTranslations("contact_page");
   const tf = useTranslations("form");
   const { openForm } = useFormModal();
+
+  const nextItems = t("next_items").split("|");
 
   return (
     <>
@@ -23,8 +25,18 @@ export default function ContactPage() {
                 {t("info_title")}
               </h2>
               <div className="space-y-6">
+                <motion.a
+                  href="mailto:hello@ludenworks.com"
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  className="flex items-center gap-4 hover:text-[#0071BD] transition-colors"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-[#0071BD]/10 text-[#0071BD] flex items-center justify-center flex-shrink-0">
+                    <Mail size={20} />
+                  </div>
+                  <span className="text-gray-700">{t("email")}</span>
+                </motion.a>
                 {[
-                  { icon: Mail, label: t("email") },
                   { icon: MapPin, label: t("location") },
                   { icon: Clock, label: t("hours") },
                 ].map(({ icon: Icon, label }, i) => (
@@ -32,7 +44,7 @@ export default function ContactPage() {
                     key={i}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
+                    transition={{ delay: (i + 1) * 0.1 }}
                     className="flex items-center gap-4"
                   >
                     <div className="w-12 h-12 rounded-xl bg-[#0071BD]/10 text-[#0071BD] flex items-center justify-center flex-shrink-0">
@@ -58,17 +70,27 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Map placeholder */}
-            <div className="bg-gray-100 rounded-2xl overflow-hidden min-h-[400px] flex items-center justify-center">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385398.5897845644!2d28.731994499999998!3d41.00498225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14caa7040068086b%3A0xe1ccfe98bc01b0d0!2zxLBzdGFuYnVs!5e0!3m2!1str!2str!4v1709900000000!5m2!1str!2str"
-                className="w-full h-full min-h-[400px]"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Ludens Works Location"
-              />
+            {/* What happens next? */}
+            <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">
+                {t("next_title")}
+              </h2>
+              <div className="space-y-4">
+                {nextItems.map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: 10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-start gap-3"
+                  >
+                    <div className="w-6 h-6 rounded-full bg-[#0071BD]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check size={12} className="text-[#0071BD]" />
+                    </div>
+                    <span className="text-gray-700">{item}</span>
+                  </motion.div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

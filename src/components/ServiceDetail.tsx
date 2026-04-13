@@ -13,8 +13,6 @@ interface ServiceDetailProps {
   color: string;
   heroImage: string;
   detailImage: string;
-  features: string[];
-  tools?: string[];
 }
 
 export default function ServiceDetail({
@@ -23,11 +21,11 @@ export default function ServiceDetail({
   color,
   heroImage,
   detailImage,
-  features,
-  tools,
 }: ServiceDetailProps) {
   const t = useTranslations("services_section");
   const { openForm } = useFormModal();
+
+  const scopeItems = t(`${serviceKey}_scope`).split("|");
 
   return (
     <>
@@ -57,7 +55,7 @@ export default function ServiceDetail({
             </h1>
           </div>
           <p className="text-lg text-gray-400 max-w-2xl">
-            {t(`${serviceKey}_desc`)}
+            {t(`${serviceKey}_detail_desc`)}
           </p>
         </div>
       </section>
@@ -69,17 +67,19 @@ export default function ServiceDetail({
             {/* Text */}
             <div className="flex-1">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                Ne Yapıyoruz?
+                {t("detail_what_title")}
               </h2>
-              <p className="text-gray-600 leading-relaxed text-lg">
-                {t(`${serviceKey}_long`)}
-              </p>
+              <div className="text-gray-600 leading-relaxed text-lg space-y-4">
+                {t(`${serviceKey}_what_desc`).split("\n").map((p, i) => (
+                  <p key={i}>{p}</p>
+                ))}
+              </div>
 
               <h3 className="text-xl font-semibold text-gray-900 mt-10 mb-4">
-                Kapsam
+                {t("detail_scope_title")}
               </h3>
               <div className="space-y-3">
-                {features.map((feature, i) => (
+                {scopeItems.map((feature, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, x: -10 }}
@@ -95,24 +95,6 @@ export default function ServiceDetail({
                   </motion.div>
                 ))}
               </div>
-
-              {tools && tools.length > 0 && (
-                <>
-                  <h3 className="text-xl font-semibold text-gray-900 mt-10 mb-4">
-                    Kullandığımız Araçlar
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {tools.map((tool) => (
-                      <span
-                        key={tool}
-                        className="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm rounded-lg"
-                      >
-                        {tool}
-                      </span>
-                    ))}
-                  </div>
-                </>
-              )}
             </div>
 
             {/* Image */}
@@ -133,16 +115,16 @@ export default function ServiceDetail({
       <section className="py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-            Bu hizmet hakkında detaylı bilgi alın
+            {t("detail_cta_title")}
           </h2>
           <p className="mt-4 text-gray-500">
-            Ücretsiz CRM analizi ile mevcut durumunuzu değerlendirelim.
+            {t("detail_cta_subtitle")}
           </p>
           <button
             onClick={openForm}
             className="mt-8 inline-flex items-center gap-2 px-7 py-3.5 bg-[#0071BD] hover:bg-[#005A97] text-white font-medium rounded-xl transition-all"
           >
-            Ücretsiz CRM Analizi
+            {t("detail_cta_button")}
             <ArrowRight size={18} />
           </button>
         </div>

@@ -22,6 +22,12 @@ export default function ProcessPage() {
       <PageHeader badge={t("badge")} title={t("title")} subtitle={t("subtitle")} />
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Intro text */}
+          <div className="max-w-3xl mx-auto mb-16 text-center">
+            {t("intro").split("\n").map((p: string, i: number) => (
+              <p key={i} className="text-gray-600 leading-relaxed text-lg mb-3">{p}</p>
+            ))}
+          </div>
           <div className="relative">
             {/* Timeline line */}
             <div className="absolute left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[#0071BD] via-[#0071BD]/30 to-transparent hidden sm:block" />
@@ -59,16 +65,16 @@ export default function ProcessPage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-            İlk adımı atın
+            {t("cta_title")}
           </h2>
           <p className="mt-4 text-gray-500">
-            Ücretsiz CRM Readiness Audit ile sürecinizi başlatın.
+            {t("cta_subtitle")}
           </p>
           <button
             onClick={openForm}
             className="mt-8 inline-flex items-center gap-2 px-7 py-3.5 bg-[#0071BD] hover:bg-[#005A97] text-white font-medium rounded-xl transition-all"
           >
-            Ücretsiz CRM Analizi
+            {t("cta_button")}
             <ArrowRight size={18} />
           </button>
         </div>

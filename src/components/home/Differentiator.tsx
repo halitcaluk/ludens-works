@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { X, Check } from "lucide-react";
 
-const rows = ["1", "2", "3", "4", "5"] as const;
+const rows = ["1", "2", "3", "4"] as const;
 
 export default function Differentiator() {
   const t = useTranslations("diff");

@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles, Layers, Network, Radio } from "lucide-react";
 import { useFormModal } from "@/components/FormProvider";
 import NetworkBackground from "./NetworkBackground";
 
@@ -11,9 +11,9 @@ export default function Hero() {
   const { openForm } = useFormModal();
 
   const stats = [
-    { value: t("stat1_value"), label: t("stat1_label") },
-    { value: t("stat2_value"), label: t("stat2_label") },
-    { value: t("stat3_value"), label: t("stat3_label") },
+    { icon: Layers, label: t("stat1_label") },
+    { icon: Network, label: t("stat2_label") },
+    { icon: Radio, label: t("stat3_label") },
   ];
 
   return (
@@ -62,8 +62,7 @@ export default function Hero() {
           <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#23B7E7] to-[#01FFFF]">
             {t("title_highlight")}
-          </span>{" "}
-          {t("title_line2")}
+          </span>
         </motion.h1>
 
         {/* Subtitle */}
@@ -101,26 +100,27 @@ export default function Hero() {
           </a>
         </motion.div>
 
-        {/* Stats */}
+        {/* Capability tags */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="mt-10 flex justify-center gap-8 sm:gap-12"
+          className="mt-10 flex flex-wrap justify-center gap-3 sm:gap-4"
         >
-          {stats.map((stat, i) => (
-            <div
-              key={i}
-              className="relative pl-4 border-l border-[#0071BD]/30 text-left"
-            >
-              <div className="text-2xl sm:text-3xl font-bold text-white">
-                {stat.value}
+          {stats.map((stat, i) => {
+            const Icon = stat.icon;
+            return (
+              <div
+                key={i}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full backdrop-blur-sm hover:bg-white/10 hover:border-[#0071BD]/40 transition-all"
+              >
+                <Icon size={16} className="text-[#23B7E7]" />
+                <span className="text-sm font-medium text-gray-300">
+                  {stat.label}
+                </span>
               </div>
-              <div className="text-xs sm:text-sm text-gray-500 mt-1">
-                {stat.label}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </motion.div>
       </div>
     </section>

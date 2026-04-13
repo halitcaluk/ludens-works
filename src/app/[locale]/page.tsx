@@ -16,7 +16,7 @@ export default function HomePage() {
       <Services />
       <Process />
       <Differentiator />
-      <Metrics />
+      {/* <Metrics /> */}
       <CTASection />
     </>
   );

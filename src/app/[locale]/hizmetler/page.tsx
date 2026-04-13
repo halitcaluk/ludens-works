@@ -21,7 +21,7 @@ export default function ServicesPage() {
 
   return (
     <>
-      <PageHeader badge={t("badge")} title={t("title")} subtitle={t("subtitle")} />
+      <PageHeader badge={t("badge")} title={t("page_title")} subtitle={t("page_subtitle")} />
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
           {services.map(({ icon: Icon, key, color, slug, img }, i) => (
@@ -55,7 +55,7 @@ export default function ServicesPage() {
                     onClick={openForm}
                     className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-200 text-gray-700 text-sm font-medium rounded-xl hover:bg-gray-50 transition-all"
                   >
-                    Bilgi Al
+                    {t("info")}
                   </button>
                 </div>
               </div>
@@ -80,16 +80,16 @@ export default function ServicesPage() {
       <section className="py-16 bg-gray-50">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
-            Hangi hizmete ihtiyacınız var?
+            {t("page_cta_title")}
           </h2>
           <p className="mt-4 text-gray-500">
-            Ücretsiz CRM analizi ile başlayalım.
+            {t("page_cta_subtitle")}
           </p>
           <button
             onClick={openForm}
             className="mt-8 inline-flex items-center gap-2 px-7 py-3.5 bg-[#0071BD] hover:bg-[#005A97] text-white font-medium rounded-xl transition-all"
           >
-            Ücretsiz CRM Analizi
+            {t("page_cta_button")}
             <ArrowRight size={18} />
           </button>
         </div>

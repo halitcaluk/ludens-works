@@ -23,7 +23,7 @@ export default function CRMFormModal({
     const data = new FormData(form);
     const newErrors: Record<string, boolean> = {};
 
-    ["first_name", "last_name", "email", "phone"].forEach((field) => {
+    ["name", "email"].forEach((field) => {
       if (!data.get(field)) newErrors[field] = true;
     });
     if (!data.get("kvkk")) newErrors["kvkk"] = true;
@@ -56,20 +56,17 @@ export default function CRMFormModal({
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-[100] flex items-center justify-center p-4"
         >
-          {/* Backdrop */}
           <div
             className="absolute inset-0 bg-black/60 backdrop-blur-sm"
             onClick={handleClose}
           />
 
-          {/* Modal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto"
           >
-            {/* Header */}
             <div className="sticky top-0 bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between rounded-t-2xl z-10">
               <div>
                 <h2 className="text-lg font-semibold text-gray-900">
@@ -102,36 +99,20 @@ export default function CRMFormModal({
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="px-6 py-5 space-y-4">
-                {/* Name row */}
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      {t("first_name")} *
-                    </label>
-                    <input
-                      name="first_name"
-                      type="text"
-                      className={`w-full px-3 py-2.5 rounded-xl border ${errors.first_name ? "border-red-400 bg-red-50" : "border-gray-200"} text-sm focus:outline-none focus:ring-2 focus:ring-[#0071BD]/20 focus:border-[#0071BD] transition-all`}
-                      onChange={() => setErrors((p) => ({ ...p, first_name: false }))}
-                    />
-                    {errors.first_name && (
-                      <p className="text-xs text-red-500 mt-1">{t("required")}</p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                      {t("last_name")} *
-                    </label>
-                    <input
-                      name="last_name"
-                      type="text"
-                      className={`w-full px-3 py-2.5 rounded-xl border ${errors.last_name ? "border-red-400 bg-red-50" : "border-gray-200"} text-sm focus:outline-none focus:ring-2 focus:ring-[#0071BD]/20 focus:border-[#0071BD] transition-all`}
-                      onChange={() => setErrors((p) => ({ ...p, last_name: false }))}
-                    />
-                    {errors.last_name && (
-                      <p className="text-xs text-red-500 mt-1">{t("required")}</p>
-                    )}
-                  </div>
+                {/* Name */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    {t("name")} *
+                  </label>
+                  <input
+                    name="name"
+                    type="text"
+                    className={`w-full px-3 py-2.5 rounded-xl border ${errors.name ? "border-red-400 bg-red-50" : "border-gray-200"} text-sm focus:outline-none focus:ring-2 focus:ring-[#0071BD]/20 focus:border-[#0071BD] transition-all`}
+                    onChange={() => setErrors((p) => ({ ...p, name: false }))}
+                  />
+                  {errors.name && (
+                    <p className="text-xs text-red-500 mt-1">{t("required")}</p>
+                  )}
                 </div>
 
                 {/* Email */}
@@ -146,22 +127,6 @@ export default function CRMFormModal({
                     onChange={() => setErrors((p) => ({ ...p, email: false }))}
                   />
                   {errors.email && (
-                    <p className="text-xs text-red-500 mt-1">{t("required")}</p>
-                  )}
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    {t("phone")} *
-                  </label>
-                  <input
-                    name="phone"
-                    type="tel"
-                    className={`w-full px-3 py-2.5 rounded-xl border ${errors.phone ? "border-red-400 bg-red-50" : "border-gray-200"} text-sm focus:outline-none focus:ring-2 focus:ring-[#0071BD]/20 focus:border-[#0071BD] transition-all`}
-                    onChange={() => setErrors((p) => ({ ...p, phone: false }))}
-                  />
-                  {errors.phone && (
                     <p className="text-xs text-red-500 mt-1">{t("required")}</p>
                   )}
                 </div>
@@ -217,6 +182,7 @@ export default function CRMFormModal({
                     t("submit")
                   )}
                 </button>
+                <p className="text-xs text-gray-400 text-center">{t("submit_note")}</p>
               </form>
             )}
           </motion.div>
