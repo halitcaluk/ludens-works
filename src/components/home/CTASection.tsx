@@ -22,7 +22,7 @@ export default function CTASection() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#0071BD]/10 rounded-full blur-[128px]" />
 
           <div className="relative">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight max-w-3xl mx-auto leading-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight lg:whitespace-nowrap">
               {t("title")}
             </h2>
             <p className="mt-6 text-lg text-gray-400 max-w-xl mx-auto">

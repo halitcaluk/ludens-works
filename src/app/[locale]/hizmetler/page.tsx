@@ -41,7 +41,6 @@ export default function ServicesPage() {
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
                   {t(`${key}_title`)}
                 </h2>
-                <p className="mt-3 text-gray-500 text-lg">{t(`${key}_desc`)}</p>
                 <p className="mt-4 text-gray-600 leading-relaxed">{t(`${key}_long`)}</p>
                 <div className="mt-6 flex flex-wrap gap-4">
                   <Link

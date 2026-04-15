@@ -17,7 +17,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative h-[85vh] min-h-[600px] flex items-center justify-center bg-[#0B0F1A] overflow-hidden">
+    <section className="relative min-h-[85vh] lg:min-h-[700px] flex items-center justify-center bg-[#0B0F1A] overflow-hidden">
       {/* Animated Network Background */}
       <div className="absolute inset-0 z-0">
         <NetworkBackground />
@@ -58,8 +58,6 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="mt-6 text-3xl sm:text-4xl lg:text-5xl xl:text-[3.5rem] font-bold text-white leading-[1.1] tracking-tight max-w-4xl mx-auto"
         >
-          {t("title_line1")}
-          <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#23B7E7] to-[#01FFFF]">
             {t("title_highlight")}
           </span>

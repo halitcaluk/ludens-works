@@ -67,7 +67,7 @@ export default function ServiceDetail({
             {/* Text */}
             <div className="flex-1">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">
-                {t("detail_what_title")}
+                {t(`${serviceKey}_what_title`)}
               </h2>
               <div className="text-gray-600 leading-relaxed text-lg space-y-4">
                 {t(`${serviceKey}_what_desc`).split("\n").map((p, i) => (

@@ -26,7 +26,7 @@ export default function ContactPage() {
               </h2>
               <div className="space-y-6">
                 <motion.a
-                  href="mailto:hello@ludenworks.com"
+                  href="mailto:info@ludens.works"
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   className="flex items-center gap-4 hover:text-[#0071BD] transition-colors"

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const partnerLogos = [
   "HubSpot", "Klaviyo", "Mailchimp", "Braze",
-  "Iterable", "Customer.io", "Bird",
+  "Iterable", "Customer.io", "Bird", "ActiveCampaign",
 ];
 
 export default function AboutPage() {
@@ -15,7 +15,7 @@ export default function AboutPage() {
     <>
       {/* Hero */}
       <section className="bg-[#0B0F1A] pt-32 pb-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div className="mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -27,7 +27,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight"
+            className="mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight lg:whitespace-nowrap"
           >
             {t("title")}
           </motion.h1>
@@ -35,7 +35,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="mt-6 text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed"
+            className="mt-6 text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed px-4"
           >
             {t("subtitle")}
           </motion.p>

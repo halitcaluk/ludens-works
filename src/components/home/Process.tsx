@@ -109,14 +109,14 @@ export default function Process() {
   return (
     <section className="py-24 bg-[#0B0F1A]" id="process">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center mx-auto">
           <span className="inline-flex items-center px-3 py-1 bg-[#0071BD]/10 border border-[#0071BD]/20 text-[#23B7E7] text-xs font-medium rounded-full">
             {t("badge")}
           </span>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-white tracking-tight">
+          <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-white tracking-tight lg:whitespace-nowrap">
             {t("title")}
           </h2>
-          <p className="mt-4 text-lg text-gray-400">{t("subtitle")}</p>
+          <p className="mt-4 text-lg text-gray-400 max-w-3xl mx-auto">{t("subtitle")}</p>
         </div>
 
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">

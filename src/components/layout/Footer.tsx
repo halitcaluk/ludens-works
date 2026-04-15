@@ -2,7 +2,6 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import { Globe, Mail, MapPin } from "lucide-react";
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -25,17 +24,6 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm leading-relaxed">{t("desc")}</p>
-            <div className="flex gap-3 mt-6">
-              {[Globe, Mail, MapPin].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center hover:bg-[#0071BD]/20 hover:text-[#23B7E7] transition-all"
-                >
-                  <Icon size={16} />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Services */}
@@ -69,7 +57,7 @@ export default function Footer() {
                 { href: "/surec", label: tn("process") },
                 { href: "/hakkimizda", label: tn("about") },
                 // { href: "/blog", label: tn("blog") },
-                { href: "/iletisim", label: tn("contact") },
+                // { href: "/iletisim", label: tn("contact") },
               ].map((link) => (
                 <li key={link.href}>
                   <Link
@@ -89,16 +77,16 @@ export default function Footer() {
               {t("contact_title")}
             </h4>
             <ul className="space-y-2.5 text-sm">
-              <li>hello@ludenworks.com</li>
+              <li>info@ludens.works</li>
               <li>Istanbul, Turkey</li>
             </ul>
             <div className="mt-6">
               <Link
                 href={pathname}
                 locale={otherLocale}
-                className="inline-flex px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/10 rounded-lg hover:text-white hover:border-white/20 transition-all uppercase"
+                className="inline-flex px-3 py-1.5 text-xs font-medium text-gray-400 border border-white/10 rounded-lg hover:text-white hover:border-white/20 transition-all"
               >
-                {otherLocale === "en" ? "English" : "Turkce"}
+                {otherLocale === "en" ? "English" : "T\u00fcrk\u00e7e"}
               </Link>
             </div>
           </div>

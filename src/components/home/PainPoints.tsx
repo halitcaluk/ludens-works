@@ -16,14 +16,14 @@ export default function PainPoints() {
   return (
     <section className="py-24 bg-white" id="pain">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center mx-auto">
           <span className="inline-flex items-center px-3 py-1 bg-red-50 text-red-600 text-xs font-medium rounded-full">
             {t("badge")}
           </span>
-          <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight">
+          <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight lg:whitespace-nowrap">
             {t("title")}
           </h2>
-          <p className="mt-4 text-lg text-gray-500">{t("subtitle")}</p>
+          <p className="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">{t("subtitle")}</p>
         </div>
 
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
