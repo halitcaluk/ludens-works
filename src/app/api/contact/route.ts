@@ -10,6 +10,7 @@ import { Resend } from "resend";
  *   email: string
  *   message?: string
  *   commercial?: boolean
+ *   turnstileToken?: string  (from Cloudflare Turnstile widget)
  * }
  *
  * Required env vars (set in .env.local / Vercel):
@@ -17,11 +18,16 @@ import { Resend } from "resend";
  *  - CONTACT_TO_EMAIL    → where form submissions are delivered (e.g. info@ludens.works)
  *  - CONTACT_FROM_EMAIL  → verified sender address on Resend (e.g. noreply@ludens.works)
  *                          For quick testing use: onboarding@resend.dev
+ *
+ * Optional (recommended for bot protection):
+ *  - TURNSTILE_SECRET_KEY      → from Cloudflare Turnstile widget (server-side secret)
+ *  - NEXT_PUBLIC_TURNSTILE_SITE_KEY → same widget's site key (client-side)
  */
 export async function POST(request: Request) {
   const apiKey = process.env.RESEND_API_KEY;
   const toEmail = process.env.CONTACT_TO_EMAIL;
   const fromEmail = process.env.CONTACT_FROM_EMAIL;
+  const turnstileSecret = process.env.TURNSTILE_SECRET_KEY;
 
   if (!apiKey || !toEmail || !fromEmail) {
     console.error(
@@ -47,6 +53,52 @@ export async function POST(request: Request) {
   const email = String(body.email ?? "").trim();
   const message = String(body.message ?? "").trim();
   const commercial = Boolean(body.commercial);
+  const turnstileToken = String(body.turnstileToken ?? "").trim();
+
+  // Verify Turnstile token if the site is configured with Turnstile
+  if (turnstileSecret) {
+    if (!turnstileToken) {
+      return NextResponse.json(
+        { ok: false, error: "Captcha verification required" },
+        { status: 400 }
+      );
+    }
+
+    try {
+      const verifyRes = await fetch(
+        "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({
+            secret: turnstileSecret,
+            response: turnstileToken,
+          }),
+        }
+      );
+      const verifyData = (await verifyRes.json()) as {
+        success?: boolean;
+        "error-codes"?: string[];
+      };
+
+      if (!verifyData.success) {
+        console.error(
+          "[contact] Turnstile verification failed:",
+          verifyData["error-codes"]
+        );
+        return NextResponse.json(
+          { ok: false, error: "Captcha verification failed" },
+          { status: 403 }
+        );
+      }
+    } catch (err) {
+      console.error("[contact] Turnstile verification error:", err);
+      return NextResponse.json(
+        { ok: false, error: "Captcha verification error" },
+        { status: 500 }
+      );
+    }
+  }
 
   if (!name || !email) {
     return NextResponse.json(

@@ -148,6 +148,9 @@
     "email": "E-posta",
     "message": "Mesaj\u0131n\u0131z",
     "message_placeholder": "Mevcut CRM yap\u0131n\u0131z ve geli\u015ftirmek istedi\u011finiz alanlar hakk\u0131nda k\u0131saca bilgi payla\u015f\u0131n...",
+    "kvkk_before": "",
+    "kvkk_link": "KVKK Ayd\u0131nlatma Metni",
+    "kvkk_after": "'ni okudum ve kabul ediyorum.",
     "kvkk": "KVKK Ayd\u0131nlatma Metni'ni okudum ve kabul ediyorum.",
     "commercial": "Taraf\u0131ma e-posta yoluyla bilgilendirme yap\u0131lmas\u0131n\u0131 kabul ediyorum.",
     "submit": "Analiz Talep Et",
@@ -166,6 +169,46 @@
     "tools_title": "Kulland\u0131\u011f\u0131m\u0131z ara\u00e7lar",
     "tools_desc": "\u0130htiyac\u0131n\u0131za en uygun CRM ve veri platformlar\u0131yla \u00e7al\u0131\u015f\u0131yoruz. Ara\u00e7lar\u0131 i\u015fin merkezine koymak yerine, ihtiyaca en uygun yap\u0131y\u0131 se\u00e7iyoruz.",
     "closing": "Ger\u00e7ek b\u00fcy\u00fcmeye daha fazla mesaj g\u00f6ndermekle de\u011fil, daha iyi sistemler kurmakla ula\u015f\u0131l\u0131r."
+  },
+  "kvkk_page": {
+    "badge": "Yasal",
+    "title": "KVKK Ayd\u0131nlatma Metni",
+    "subtitle": "Ki\u015fisel verilerinizin i\u015flenmesine ili\u015fkin bilgilendirme.",
+    "last_updated": "Son g\u00fcncelleme: Nisan 2026",
+    "sections": [
+      {
+        "heading": "1. Veri Sorumlusu",
+        "body": "Ludens Works (\u201c\u015eirket\u201d), 6698 say\u0131l\u0131 Ki\u015fisel Verilerin Korunmas\u0131 Kanunu (\u201cKVKK\u201d) kapsam\u0131nda veri sorumlusu s\u0131fat\u0131yla hareket etmekte olup, web sitemiz arac\u0131l\u0131\u011f\u0131yla toplanan ki\u015fisel verilerinizin i\u015flenmesine ili\u015fkin sizi bilgilendirmek amac\u0131yla i\u015fbu ayd\u0131nlatma metnini haz\u0131rlam\u0131\u015ft\u0131r."
+      },
+      {
+        "heading": "2. \u0130\u015flenen Ki\u015fisel Veriler",
+        "body": "Web sitemizde yer alan ileti\u015fim / CRM analiz talep formu arac\u0131l\u0131\u011f\u0131yla ad\u0131n\u0131z, e-posta adresiniz ve taraf\u0131m\u0131za iletti\u011finiz mesaj i\u00e7eri\u011fi taraf\u0131m\u0131zca i\u015flenmektedir."
+      },
+      {
+        "heading": "3. Ki\u015fisel Verilerin \u0130\u015fleme Ama\u00e7lar\u0131",
+        "body": "Ki\u015fisel verileriniz; taleplerinizin de\u011ferlendirilmesi, sorular\u0131n\u0131za yan\u0131t verilmesi, hizmetlerimizin tan\u0131t\u0131lmas\u0131, iletişim faaliyetlerinin y\u00fcr\u00fct\u00fclmesi ve a\u00e7\u0131k r\u0131zan\u0131z olmas\u0131 halinde ticari elektronik ileti g\u00f6nderilmesi amac\u0131yla i\u015flenmektedir."
+      },
+      {
+        "heading": "4. \u0130\u015fleme \u015eartlar\u0131 ve Hukuki Sebepler",
+        "body": "Ki\u015fisel verileriniz, KVKK\u2019n\u0131n 5. maddesinde d\u00fczenlenen \u201ca\u00e7\u0131k r\u0131zan\u0131z\u201d, \u201cbir s\u00f6zle\u015fmenin kurulmas\u0131 veya ifas\u0131yla do\u011frudan do\u011fruya ilgili olmas\u0131\u201d ve \u201cmeşru menfaat\u201d hukuki sebeplerine dayal\u0131 olarak i\u015flenmektedir. Ticari elektronik ileti g\u00f6nderimi ise yaln\u0131zca a\u00e7\u0131k r\u0131zan\u0131z dahilinde ger\u00e7ekle\u015ftirilir."
+      },
+      {
+        "heading": "5. Ki\u015fisel Verilerin Aktar\u0131m\u0131",
+        "body": "Ki\u015fisel verileriniz; yaln\u0131zca yukar\u0131da belirtilen ama\u00e7lar\u0131n yerine getirilebilmesi amac\u0131yla hizmet ald\u0131\u011f\u0131m\u0131z e-posta g\u00f6nderim altyap\u0131s\u0131 ve sunucu sa\u011flay\u0131c\u0131s\u0131 gibi tedarik\u00e7ilerimizle, gerekli g\u00fcvenlik tedbirleri al\u0131narak ve s\u00f6zle\u015fmesel y\u00fck\u00fcml\u00fcl\u00fckler \u00e7er\u00e7evesinde payla\u015f\u0131labilir. Veriler, yasal zorunluluk olmad\u0131k\u00e7a \u00fc\u00e7\u00fcnc\u00fc taraflara sat\u0131lmaz veya pazarlama ama\u00e7l\u0131 payla\u015f\u0131lmaz."
+      },
+      {
+        "heading": "6. Saklama S\u00fcresi",
+        "body": "Ki\u015fisel verileriniz, i\u015fleme amac\u0131n\u0131n gerektirdi\u011fi süre ve ilgili mevzuat\u0131n \u00f6ng\u00f6rd\u00fc\u011f\u00fc zamana\u015f\u0131m\u0131 süreleri boyunca saklan\u0131r; bu süreler sona erdi\u011finde silinir, yok edilir veya anonim hale getirilir."
+      },
+      {
+        "heading": "7. Haklar\u0131n\u0131z",
+        "body": "KVKK\u2019n\u0131n 11. maddesi kapsam\u0131nda; ki\u015fisel verilerinizin i\u015flenip i\u015flenmedi\u011fini \u00f6\u011frenme, i\u015flenmi\u015fse buna ili\u015fkin bilgi talep etme, i\u015flenme amac\u0131n\u0131 \u00f6\u011frenme, yurt i\u00e7inde veya yurt d\u0131\u015f\u0131nda aktar\u0131ld\u0131\u011f\u0131 \u00fc\u00e7\u00fcnc\u00fc taraflar\u0131 bilme, eksik veya yanl\u0131\u015f i\u015flenmi\u015fse d\u00fczeltilmesini isteme, silinmesini veya yok edilmesini isteme, i\u015flenen verilerinizin aktar\u0131ld\u0131\u011f\u0131 \u00fc\u00e7\u00fcnc\u00fc ki\u015filere bildirilmesini isteme ve kanuna ayk\u0131r\u0131 i\u015fleme sebebiyle zarara u\u011frama halinde tazminat talep etme haklar\u0131na sahipsiniz."
+      },
+      {
+        "heading": "8. \u0130leti\u015fim",
+        "body": "Haklar\u0131n\u0131z\u0131 kullanmak veya ki\u015fisel verilerinizin i\u015flenmesine ili\u015fkin her t\u00fcrl\u00fc soru ve talepleriniz i\u00e7in info@ludens.works adresine e-posta g\u00f6nderebilirsiniz. Ba\u015fvurular\u0131n\u0131z, KVKK\u2019n\u0131n 13. maddesi uyar\u0131nca en ge\u00e7 30 g\u00fcn i\u00e7inde sonu\u00e7land\u0131r\u0131lacakt\u0131r."
+      }
+    ]
   },
   "blog_page": {
     "badge": "Blog",

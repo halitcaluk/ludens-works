@@ -151,6 +151,9 @@
     "email": "Email",
     "message": "Your Message",
     "message_placeholder": "Briefly describe your current CRM setup and what you'd like to improve...",
+    "kvkk_before": "I have read and agree to the ",
+    "kvkk_link": "Privacy Notice",
+    "kvkk_after": " regarding the processing of my personal data.",
     "kvkk": "I have read and agree to the Privacy Notice regarding the processing of my personal data.",
     "commercial": "I agree to receive communication via email from Ludens Works.",
     "submit": "Request Analysis",
@@ -169,6 +172,46 @@
     "tools_title": "Tools & platforms we work with",
     "tools_desc": "We work with leading CRM and data platforms, selecting the right tools based on your needs, not the other way around.",
     "closing": "We believe growth doesn't come from sending more messages, it comes from building better systems."
+  },
+  "kvkk_page": {
+    "badge": "Legal",
+    "title": "Privacy Notice",
+    "subtitle": "Information regarding the processing of your personal data.",
+    "last_updated": "Last updated: April 2026",
+    "sections": [
+      {
+        "heading": "1. Data Controller",
+        "body": "Ludens Works (\u201cthe Company\u201d) acts as the data controller under Turkey\u2019s Personal Data Protection Law No. 6698 (\u201cKVKK\u201d) and applicable international data protection regulations. This notice explains how personal data collected through our website is processed."
+      },
+      {
+        "heading": "2. Personal Data Collected",
+        "body": "Through our contact / CRM analysis request form, we collect and process your name, email address, and the content of any message you send us."
+      },
+      {
+        "heading": "3. Purposes of Processing",
+        "body": "Your personal data is processed to evaluate your requests, respond to your inquiries, present our services, manage our communications, and\u2014if you provide explicit consent\u2014to send commercial electronic communications."
+      },
+      {
+        "heading": "4. Legal Basis for Processing",
+        "body": "We process your personal data based on the legal grounds set out in Article 5 of KVKK: your explicit consent, the necessity of processing for the performance of a contract, and our legitimate interests. Commercial electronic messages are only sent with your explicit opt-in consent."
+      },
+      {
+        "heading": "5. Data Sharing",
+        "body": "Your personal data may be shared solely with our service providers (such as email delivery infrastructure and hosting providers) to the extent necessary for the purposes above, under appropriate security measures and contractual safeguards. We do not sell your data or share it with third parties for marketing unless legally required."
+      },
+      {
+        "heading": "6. Data Retention",
+        "body": "Your personal data is retained for as long as necessary to fulfil the processing purposes and to comply with applicable legal retention periods. Once these periods expire, your data is deleted, destroyed, or anonymized."
+      },
+      {
+        "heading": "7. Your Rights",
+        "body": "Under Article 11 of KVKK, you have the right to: learn whether your personal data is processed, request information about the processing, learn the purpose and whether the data is used accordingly, identify third parties to whom your data is transferred, request correction of incomplete or incorrect data, request deletion or destruction, request that corrections or deletions be communicated to third parties, and claim compensation for damages caused by unlawful processing."
+      },
+      {
+        "heading": "8. Contact",
+        "body": "To exercise your rights or for any questions about the processing of your personal data, please email info@ludens.works. Under Article 13 of KVKK, we will respond to your request within 30 days at the latest."
+      }
+    ]
   },
   "blog_page": {
     "badge": "Blog",

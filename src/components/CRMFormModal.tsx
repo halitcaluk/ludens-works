@@ -1,9 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, CheckCircle, Loader2 } from "lucide-react";
+import { Link } from "@/i18n/navigation";
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: HTMLElement | string,
+        options: {
+          sitekey: string;
+          size?: "invisible" | "normal" | "compact";
+          callback?: (token: string) => void;
+          "error-callback"?: () => void;
+          "expired-callback"?: () => void;
+        }
+      ) => string;
+      execute: (widgetId: string) => void;
+      reset: (widgetId: string) => void;
+      remove: (widgetId: string) => void;
+    };
+  }
+}
 
 export default function CRMFormModal({
   open,
@@ -17,6 +40,95 @@ export default function CRMFormModal({
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, boolean>>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const turnstileContainerRef = useRef<HTMLDivElement | null>(null);
+  const widgetIdRef = useRef<string | null>(null);
+  const tokenResolverRef = useRef<((token: string) => void) | null>(null);
+
+  // Load Turnstile script once
+  useEffect(() => {
+    if (!TURNSTILE_SITE_KEY) return;
+    if (typeof window === "undefined") return;
+    if (document.querySelector("script[data-turnstile]")) return;
+
+    const script = document.createElement("script");
+    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+    script.async = true;
+    script.defer = true;
+    script.setAttribute("data-turnstile", "true");
+    document.head.appendChild(script);
+  }, []);
+
+  // Render Turnstile widget when modal opens
+  useEffect(() => {
+    if (!open || !TURNSTILE_SITE_KEY) return;
+
+    let cancelled = false;
+    const tryRender = () => {
+      if (cancelled) return;
+      if (!window.turnstile || !turnstileContainerRef.current) {
+        setTimeout(tryRender, 200);
+        return;
+      }
+      if (widgetIdRef.current) return; // already rendered
+
+      widgetIdRef.current = window.turnstile.render(
+        turnstileContainerRef.current,
+        {
+          sitekey: TURNSTILE_SITE_KEY,
+          size: "invisible",
+          callback: (token: string) => {
+            tokenResolverRef.current?.(token);
+            tokenResolverRef.current = null;
+          },
+          "error-callback": () => {
+            tokenResolverRef.current?.("");
+            tokenResolverRef.current = null;
+          },
+          "expired-callback": () => {
+            if (widgetIdRef.current && window.turnstile) {
+              window.turnstile.reset(widgetIdRef.current);
+            }
+          },
+        }
+      );
+    };
+    tryRender();
+
+    return () => {
+      cancelled = true;
+      if (widgetIdRef.current && window.turnstile) {
+        try {
+          window.turnstile.remove(widgetIdRef.current);
+        } catch {
+          /* noop */
+        }
+        widgetIdRef.current = null;
+      }
+    };
+  }, [open]);
+
+  async function getTurnstileToken(): Promise<string> {
+    if (!TURNSTILE_SITE_KEY) return "";
+    if (!window.turnstile || !widgetIdRef.current) return "";
+
+    return new Promise<string>((resolve) => {
+      tokenResolverRef.current = resolve;
+      try {
+        window.turnstile!.reset(widgetIdRef.current!);
+        window.turnstile!.execute(widgetIdRef.current!);
+      } catch {
+        resolve("");
+      }
+      // Safety timeout — if Turnstile doesn't respond in 15s, give up
+      setTimeout(() => {
+        if (tokenResolverRef.current === resolve) {
+          tokenResolverRef.current = null;
+          resolve("");
+        }
+      }, 15000);
+    });
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -39,6 +151,8 @@ export default function CRMFormModal({
     setLoading(true);
 
     try {
+      const turnstileToken = await getTurnstileToken();
+
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -47,6 +161,7 @@ export default function CRMFormModal({
           email: data.get("email"),
           message: data.get("message"),
           commercial: Boolean(data.get("commercial")),
+          turnstileToken,
         }),
       });
 
@@ -179,7 +294,17 @@ export default function CRMFormModal({
                       onChange={() => setErrors((p) => ({ ...p, kvkk: false }))}
                     />
                     <span className="text-xs text-gray-600 leading-relaxed">
-                      {t("kvkk")} *
+                      {t("kvkk_before")}
+                      <Link
+                        href="/kvkk"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-[#0071BD] transition-colors"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {t("kvkk_link")}
+                      </Link>
+                      {t("kvkk_after")} *
                     </span>
                   </label>
 
@@ -194,6 +319,9 @@ export default function CRMFormModal({
                     </span>
                   </label>
                 </div>
+
+                {/* Invisible Turnstile widget */}
+                <div ref={turnstileContainerRef} />
 
                 {/* Error banner */}
                 {submitError && (
