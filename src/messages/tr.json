@@ -153,6 +153,7 @@
     "submit": "Analiz Talep Et",
     "submit_note": "24 saat i\u00e7inde size d\u00f6nelim",
     "success": "Ba\u015fvurunuz al\u0131nd\u0131! En k\u0131sa s\u00fcrede size d\u00f6nece\u011fiz.",
+    "error": "Bir hata olu\u015ftu. L\u00fctfen tekrar deneyin veya info@ludens.works adresine yaz\u0131n.",
     "required": "Bu alan zorunludur.",
     "close": "Kapat"
   },

@@ -16,8 +16,9 @@ export default function CRMFormModal({
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Record<string, boolean>>({});
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -34,16 +35,40 @@ export default function CRMFormModal({
     }
 
     setErrors({});
+    setSubmitError(null);
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
+          commercial: Boolean(data.get("commercial")),
+        }),
+      });
+
+      const json = await res.json().catch(() => ({}));
+
+      if (!res.ok || !json.ok) {
+        setSubmitError(t("error"));
+        return;
+      }
+
       setSubmitted(true);
-    }, 1500);
+    } catch {
+      setSubmitError(t("error"));
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleClose = () => {
     setSubmitted(false);
     setErrors({});
+    setSubmitError(null);
     onClose();
   };
 
@@ -169,6 +194,13 @@ export default function CRMFormModal({
                     </span>
                   </label>
                 </div>
+
+                {/* Error banner */}
+                {submitError && (
+                  <div className="px-3 py-2 rounded-lg bg-red-50 border border-red-200 text-xs text-red-700">
+                    {submitError}
+                  </div>
+                )}
 
                 {/* Submit */}
                 <button

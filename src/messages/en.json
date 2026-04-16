@@ -156,6 +156,7 @@
     "submit": "Request Analysis",
     "submit_note": "We'll reply in 24 hours",
     "success": "Application received! We'll get back to you shortly.",
+    "error": "Something went wrong. Please try again or email us at info@ludens.works.",
     "required": "This field is required.",
     "close": "Close"
   },
